@@ -17,3 +17,32 @@
 .center {
 	text-align: center;
 }
+
+.jumbotron {
+	background-image: asset-url('pea.jpg');
+	background-size: cover;
+	height: 300px;
+
+}
+
+.jumbotron h1, h2 {
+	color: #fff;
+	margin-bottom: 30px;
+	letter-spacing: -1px;
+	font-weight: bold;
+}
+
+.btn-xlarge {
+	background-color: #073815;
+}
+
+.btn-xlarge:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.footer {
+	text-align: center;
+	
+}
+
