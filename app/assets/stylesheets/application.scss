@@ -25,7 +25,14 @@
 
 }
 
-.jumbotron h1, h2 {
+.jumbotron h1 {
+	color: #fff;
+	margin-bottom: 30px;
+	letter-spacing: -1px;
+	font-weight: bold;
+}
+
+.jumbotron h2 {
 	color: #fff;
 	margin-bottom: 30px;
 	letter-spacing: -1px;
@@ -43,6 +50,6 @@
 
 .footer {
 	text-align: center;
-	
+
 }
 
