@@ -20,14 +20,15 @@ class ChefTest < ActiveSupport::TestCase
 	end
 
 	test "password should be present" do
-		@chef.password = " "
+		@chef.password = @chef.password_confirmation = " "
 		assert_not @chef.valid?
 	end
 
-	test "password confirmation should be valid" do
-		@chef.password_confirmation = " "
+	test "password should be at least 5 characters" do
+		@chef.password = @chef.password_confirmation = "x" * 4
 		assert_not @chef.valid?
 	end
+
 
 	test "name should be less than 30 characters" do
 		@chef.chefname = "a" * 31

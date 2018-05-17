@@ -5,5 +5,6 @@ class Chef < ApplicationRecord
 	validates :chefname, length: { maximum: 30 }
 	validates :email, uniqueness: {case_sensitive: false}
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+	validates :password, length: { minimum: 5 }
 	has_many :recipes
 end
