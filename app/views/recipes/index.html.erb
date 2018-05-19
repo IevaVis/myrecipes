@@ -1,3 +1,7 @@
 <%= render 'shared/page_title', title: "Showing all recipes" %>
 
+<%= will_paginate @recipes, list_classes: %w(pagination justify-content-center) %>
+
 <%= render 'recipe', obj: @recipes %>
+
+<%= will_paginate @recipes, list_classes: %w(pagination justify-content-center) %>

@@ -7,4 +7,7 @@
 </div>
 
 <h4 align="center"><%= @chef.chefname %>'s recipes</h4>
-<%= render 'recipes/recipe', obj: @chef.recipes %>
+
+<%= will_paginate @chef_recipes, list_classes: %w(pagination justify-content-center) %>
+<%= render 'recipes/recipe', obj: @chef_recipes %>
+<%= will_paginate @chef_recipes, list_classes: %w(pagination justify-content-center) %>

@@ -1,5 +1,7 @@
 <%= render 'shared/page_title', title: "Showing all chefs" %>
 
+<%= will_paginate @recipes, list_classes: %w(pagination justify-content-center) %>
+
 <div align="center">
 	<% @chefs.each do |chef| %>
 		<ul class="listing">
@@ -13,5 +15,7 @@
 		</ul>
 	<% end %>
 </div>
+
+<%= will_paginate @recipes, list_classes: %w(pagination justify-content-center) %>
 
 
