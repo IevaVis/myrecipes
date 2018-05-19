@@ -37,8 +37,8 @@ class ChefsController < ApplicationController
 
 	def destroy
 		@chef.destroy
-		flash[:success] = "Account is deleted successfully"
-		redirect_to recipes_path
+		flash[:danger] = "Chef and all associated recipes have been deleted successfully"
+		redirect_to chefs_path
 	end
 
 	private
