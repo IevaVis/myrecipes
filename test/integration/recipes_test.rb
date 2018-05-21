@@ -49,6 +49,7 @@ test "create new valid recipe" do
 end
 
 	test "reject invalid recipe submissions" do
+		sign_in_as(@chef, "12345")
 		get new_recipe_path
 		assert_template 'recipes/new'
 		assert_no_difference 'Recipe.count' do

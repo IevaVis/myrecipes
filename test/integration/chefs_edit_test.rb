@@ -8,6 +8,7 @@ def setup
 end
 
 test "reject an invalid edit" do
+	sign_in_as(@chef, "12345")
  	get edit_chef_path(@chef)
  	assert_template 'chefs/edit'
  	patch chef_path(@chef), params: { chef: { chefname: " ", email: "ieva@example.com"} }
@@ -18,6 +19,7 @@ test "reject an invalid edit" do
  end
 
  test "accept valid edit" do
+ 	sign_in_as(@chef, "12345")
  	get edit_chef_path(@chef)
  	assert_template 'chefs/edit'
  	patch chef_path(@chef), params: { chef: { chefname: "Ieva", email: "ieva@example.com"} }
