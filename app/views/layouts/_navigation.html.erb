@@ -27,19 +27,32 @@
        <a class="nav-link" href="/recipes">All Recipes</a>
       </li>
       <% end %>
-    <% if logged_in? %>
-      <li class="nav-item dropdown">
+       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= current_chef.chefname.capitalize %>'s Profile <%= "Admin" if current_chef.admin? %>
+         Ingredients
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/chefs/<%=current_chef.id %>">View your profile</a>
-          <a class="dropdown-item" href="/chefs/<%=current_chef.id %>/edit">Edit profile</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="/ingredients">All Ingredients</a>
+          <% Ingredient.all.each do |ing| %>
+          <a class="dropdown-item" href="/ingredients/<%= ing.id %>"><%= ing.name.capitalize %></a>
+          <% end %>
           <div class="dropdown-divider"></div>
-          <a><%= link_to "Log out", logout_path, method: :delete , class: 'dropdown-item' %></a>
+          <a class="dropdown-item" href="/ingredients/new">New Ingredient</a>
         </div>
       </li>
+      <% if logged_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_chef.chefname.capitalize %>'s Profile <%= "Admin" if current_chef.admin? %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/chefs/<%=current_chef.id %>">View your profile</a>
+            <a class="dropdown-item" href="/chefs/<%=current_chef.id %>/edit">Edit profile</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a><%= link_to "Log out", logout_path, method: :delete , class: 'dropdown-item' %></a>
+          </div>
+        </li>
       <% else %>
       <li class="nav-item">
         <a class="nav-link" href="/login">Log in</a>
