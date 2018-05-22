@@ -32,6 +32,25 @@
   </div>
 </div>
 
+  <% if @recipe.comments != 0 %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <br/><h6>Prior Comments: </h6>
+      <div id="messages">
+        <%= render partial: 'comments/comments', object: @comments %>
+      </div>
+    </div>
+    </div>
+
+  <% else %>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h6>No comments yet</h6>
+      </div>
+    </div>
+
+  <% end %>
+
 
 
 
