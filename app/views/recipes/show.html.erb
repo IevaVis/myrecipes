@@ -5,6 +5,9 @@
   <hr />
   <%= simple_format(@recipe.description) %>
   <hr />
+  <% if @recipe.ingredients.any? %>
+  <p>Ingredients: <%= render @recipe.ingredients %></p>
+  <% end %>
   <div class="clearfix">
   <div class="float-xl-right">
     <p class="center">
