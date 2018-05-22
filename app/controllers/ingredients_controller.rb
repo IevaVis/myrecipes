@@ -1,8 +1,9 @@
 class IngredientsController < ApplicationController
 	before_action :set_ingredient, only: [:edit, :update, :show]
+	before_action :require_admin, except: [:show, :index]
 
 	def index
-		@ingredients = Ingredient.paginate(:page => params[:page], per_page: 10)
+		@ingredients = Ingredient.paginate(:page => params[:page], per_page: 10).order('name ASC')
 	end
 
 	def new
@@ -12,10 +13,10 @@ class IngredientsController < ApplicationController
 	def create
 		@ingredient = Ingredient.new(ingredient_params)
 		if @ingredient.save
-			flash[:success] = "Ingredient added successfully"
-			redirect_to recipe_path(@recipe)
+			flash[:success] = "Ingredient created successfully"
+			redirect_to ingredient_path(@ingredient)
 		else
-			redirect_to recipes_path
+			render :new
 		end
 	end
 
@@ -28,6 +29,12 @@ class IngredientsController < ApplicationController
 	end
 
 	def update
+		if @ingredient.update(ingredient_params)
+			flash[:success] = "Ingredient was updated successfully"
+			redirect_to @ingredient
+		else
+			render :edit
+		end
 	end
 
 	private
@@ -38,6 +45,13 @@ class IngredientsController < ApplicationController
 
 	def set_ingredient
 		@ingredient = Ingredient.find(params[:id])
+	end
+
+	def require_admin
+		if !logged_in? || (logged_in? and !current_chef.admin?)
+			flash[:danger] = "Only admin users are able to perform this action"
+			redirect_to ingredients_path
+		end
 	end
 
 
