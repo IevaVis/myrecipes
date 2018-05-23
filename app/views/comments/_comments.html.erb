@@ -1,9 +1,7 @@
 <%= will_paginate comments, list_classes: %w(pagination justify-content-center) %>
 
 <% comments.each do |comment| %>
-<div id="comments">
  <%= render partial: 'comments/comment', object: comment %>
-</div>
 <% end %>
 
 <%= will_paginate comments, list_classes: %w(pagination justify-content-center) %>
