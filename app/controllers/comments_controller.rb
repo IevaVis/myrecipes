@@ -1,16 +1,17 @@
 class CommentsController < ApplicationController
+	before_action :require_user
 
-	def new
-		@comment = Comment.new
-	end
 
 	def create 
-		@comment = Comment.new(comment_params)
-		@comment_chef = current_chef
+		@recipe = Recipe.find(params[:recipe_id])
+		@comment = @recipe.comments.build(comment_params)
+		@comment.chef = current_chef
 		if @comment.save
+			flash[:success] = "Comment was created successfully!"
 			redirect_to recipe_path(@recipe)
 		else
-			render :new
+			flash[:danger] = "Comment was not created"
+			redirect_back(fallback_location: root_path)
 		end
 	end
 
@@ -19,5 +20,7 @@ class CommentsController < ApplicationController
 	def comment_params
 		params.require(:comment).permit(:description)
 	end
+
+	
 end
 
