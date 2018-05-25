@@ -31,10 +31,21 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="row col-md-8 offset-md-2">
+    <%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
+      <i class="fa fa-thumbs-up"></i>
+    <% end %> <%= @recipe.thumbs_up_total %> ||
+    <%= link_to like_recipe_path(@recipe, like: false),  method: :post do %>
+      <i class="fa fa-thumbs-down"></i>
+    <% end %> <%= @recipe.thumbs_down_total %>
+  </div>
+</div>
+
 <% if logged_in? %>
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <br/><br/><h3>Commments</h3>
+      <br/><br/><h3>Comments</h3>
       <hr />
         <%= form_for([@recipe, @comment], remote: true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
           <div class="form-group row">

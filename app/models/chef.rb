@@ -8,4 +8,5 @@ class Chef < ApplicationRecord
 	has_many :recipes, dependent: :destroy
 	has_many :comments, dependent: :destroy
 	has_many :messages, dependent: :destroy
+	has_many :likes, dependent: :destroy
 end

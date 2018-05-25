@@ -13,10 +13,10 @@ module ApplicationCable
   	protected
 
 		#this method returns current user
-		#cookies.signed = in the collection of cookies which have been passed between client and server, the cookies beeing accessed are encrypted
-		#cookies.signed - comes from sessions controller
+		#cookies.encrypted = in the collection of cookies which have been passed between client and server, the cookies beeing accessed are encrypted
+		#cookies.encryoted - comes from sessions controller
   	def find_current_user
-  		if current_chef = Chef.find_by(id: cookies.signed[:chef_id])
+  		if current_chef = Chef.find_by(id: cookies.encrypted[:chef_id])
   			current_chef
   		else
   			reject_unauthorized_connection

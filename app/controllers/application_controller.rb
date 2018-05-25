@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
 	helper_method :current_chef, :logged_in?
 
 def current_chef
