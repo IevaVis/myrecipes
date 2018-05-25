@@ -1,7 +1,14 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 
 <div class="card card-body bg-light col-md-8 offset-md-2">
-	<h4 class="center description"><strong>Steps: </strong></h4>
+  <div align="center">
+        <% if @recipe.picture.present? %>
+          <%= image_tag @recipe.picture.url, size: "200x200" %>
+        <% else %>
+          <%= image_tag "/assets/food2.jpg", class: "picture" %>
+        <% end %>
+      </div><br/>
+	<h6 class="center description"><strong>How to make it: </strong></h6>
   <hr />
   <%= simple_format(@recipe.description) %>
   <hr />

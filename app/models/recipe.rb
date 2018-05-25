@@ -7,6 +7,7 @@ class Recipe < ApplicationRecord
 	has_many :ingredients, through: :recipe_ingredients
 	has_many :comments, dependent: :destroy
 	has_many :likes, dependent: :destroy
+	mount_uploader :picture, PictureUploader
 
 	# counting the number of likes and dislikes
 	def thumbs_up_total
